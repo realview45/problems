@@ -11,19 +11,23 @@ public class P006호텔 {
         int C = Integer.parseInt(strA[0]);
         int N = Integer.parseInt(strA[1]);
         int[][] arr = new int[N][2];
-        int[] dp = new int[C+1];
+        int[] dp = new int[1000001];//비용에대한 고객수
         for(int i=0;i<N;i++){
             String[] strA2 = br.readLine().split(" ");
             arr[i][0] = Integer.parseInt(strA2[0]);//비용
             arr[i][1] = Integer.parseInt(strA2[1]);//고객의 수
         }
-        Arrays.fill(dp,987654321);
         for(int i=0;i<N;i++){
-            for(int j=1;j<C+1;j++){
-                if(j-arr[i][1]<1) dp[j]= Math.min(dp[j],arr[i][0]);
-                else dp[j]=Math.min(dp[j],dp[j-arr[i][1]]+arr[i][0]);
+            for(int j=1;j<1000001;j++){
+                if(j-arr[i][0]>=0) dp[j]=Math.max(dp[j],dp[j-arr[i][0]]+arr[i][1]);
             }
         }
-        System.out.println(dp[C]);
+        for(int i=1;i<1000001;i++){
+            if(dp[i]>=C){
+                System.out.println(i);
+                break;
+            }
+        }
+        //System.out.println(dp[C]);
     }
 }
