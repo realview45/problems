@@ -17,7 +17,7 @@ public class P001과자나눠주기 {
             arr[i] = Integer.parseInt(strA2[i]);
         }
         Arrays.sort(arr);
-        int start =0;
+        int start =1;
         int end =arr[arr.length-1];
         int answer =0;
         while(start<=end){
